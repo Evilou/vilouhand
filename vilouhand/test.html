@@ -1,0 +1,431 @@
+﻿<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<style>
+body, html {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.main-container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #eee;
+}
+
+.head {
+	position: absolute;
+	width: 100%;
+	height: 48px;
+	background-color: #57b39d;
+	line-height: 48px;
+	z-index: 10;
+	text-transform: uppercase;
+}
+
+.head .titre {
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal,
+		"Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black",
+		sans-serif;
+	color: #fff;
+	font-size: 32px;
+	text-align: center;
+	width: 100%;
+	position: relative;
+	display: block;
+	z-index: 0;
+}
+
+.bt-navigation {
+	display: block;
+	height: 48px;
+	width: 48px;
+	position: absolute;
+	color: #EEE;
+	line-height: 48px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 32px;
+	z-index: 10;
+	display: none;
+}
+
+.menu {
+	position: absolute;
+	top: 48px;
+	height: calc(100% - 48px);
+	background-color: rgba(170, 170, 170, 0.9);
+	z-index: 20;
+	transition: left 0.3s;
+	overflow: hidden;
+	display: none;
+}
+
+.menu[role-state="opened"] {
+	left: 0px;
+}
+
+.menu[role-state="closed"] {
+	left: -115px;
+}
+
+.bt-navigation:Hover {
+	color: #d30000;
+}
+
+.main {
+	position: absolute;
+	top: 48px;
+}
+
+.content-block {
+	top: 48px;
+	position: absolute;
+	width: 100%;
+	height: calc(100% - 48px);
+	background-color: #D6D6D6;
+	z-index: 10;
+	overflow: auto;
+}
+
+.tuile {
+	width: 64px;
+	height: 64px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 4px;
+	box-shadow: 0 0 2px #6B3232;
+	cursor: pointer;
+	background-color: #fff;
+	transition: background-color 0.6s;
+}
+
+.tuile:Hover {
+	background-color: rgba(239, 171, 98, 0.8);
+	border-radius: 2px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 4px;
+	box-shadow: 0 0 2px #39100D;
+	cursor: pointer;
+}
+
+.tuile .icone {
+	color: #57b39d;
+	font-size: 24px;
+	margin: 6px;
+}
+
+.tuile .titre {
+	color: #57b39d;
+	font-size: 10px;
+	text-align: center;
+	font-family: arial;
+}
+
+.nav-zone {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 16px;
+	flex-wrap: wrap;
+}
+
+.actu-obj-container {
+	display: block;
+	box-shadow: 0 0 1px #000;
+	border-radius: 2px;
+	overflow: hidden;
+	position: relative;
+	font-family: arial;
+	margin: 4px 10px;
+	min-width: 240px;
+	background-color: #fff;
+}
+
+.actu-obj {
+	position: relative;
+	display: block;
+	margin: 4px;
+	width: calc(100% - 8px);
+	height: 80px;
+}
+
+.actu-obj .titre {
+	display: block;
+	top: 2px;
+	left: 46px;
+	width: calc(100% - 48px);
+	line-height: 24px;
+	height: 24px;
+	font-weight: bold;
+	position: absolute;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+.actu-obj .contenu {
+	display: block;
+	top: 26px;
+	left: 60px;
+	width: calc(100% - 62px);
+	height: calc(100% - 30px);
+	position: absolute;
+	text-align: justify;
+	font-size: 12px;
+	overflow: hidden;
+}
+
+.actu-obj.important .date {
+	background-color: #D85827;
+}
+
+.date {
+	position: absolute;
+	display: block;
+	top: 2px;
+	left: 2px;
+	background-color: #79B18C;
+	height: calc(100% - 4px);
+	width: 40px;
+	color: #fff;
+	text-align: center;
+	font-size: 10px;
+}
+
+.date * {
+	margin: 2px;
+	display: block;
+}
+
+.date .jour {
+	font-size: 24px;
+	margin-top: 10px;
+}
+
+.date .moi {
+	font-size: 12px;
+}
+
+.masque-contenu {
+	background: linear-gradient(to bottom, rgba(220, 220, 220, 0),
+		rgba(255, 255, 255, 1));
+	position: absolute;
+	display: block;
+	bottom: 2px;
+	left: 60px;
+	width: calc(100% - 62px);
+	height: 16px;
+}
+
+@media screen and (max-width:480px) {
+	.head .titre {
+		font-size: 16px;
+	}
+	.menu {
+		display: block;
+	}
+	.bt-navigation {
+		display: block;
+	}
+	.nav-zone {
+		display: none;
+	}
+	.tuile {
+		width: 72px;
+		height: 72px;
+		margin : 8px;
+	}
+	.tuile:Hover {
+		margin : 8px;
+	}
+	.tuile .icone {
+		font-size: 32px;
+		margin: 6px;
+	}
+}
+
+.container>.titre {
+	height: 32px;
+	display: block; 
+	background-color: #57b39d;
+	margin: 2px;
+	font-size: 14px;
+	font-family: arial;
+	font-weight: bold;
+	line-height: 32px;
+	text-align: left;
+	text-indent: 10px;
+	color: #350F0F;
+	width: 100%;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container>.content {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+}
+
+@media screen and (max-width:640px) {
+}
+</style>
+<script>
+	function menu_change_state() {
+		var objMenu = document.getElementById('menu');
+		if (objMenu != null) {
+			objMenu.setAttribute('role-state', objMenu
+					.getAttribute('role-state') == 'opened' ? 'closed'
+					: 'opened');
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="main-container">
+		<div class="head">
+			<span onclick="menu_change_state();" class="bt-navigation fa fa-bars"></span>
+			<span class="titre">Tarbes Union Handball</span>
+		</div>
+
+		<div class="content-block">
+			<div class="nav-zone">
+				<div class="tuile">
+					<span class="icone fa fa-home"></span> <span class="titre">Accueil</span>
+				</div>
+				<div class="tuile">
+					<span class="icone fa fa-info-circle"></span> <span class="titre">Le club</span>
+				</div>
+				<div class="tuile">
+					<span class="icone fa fa-group"></span> <span class="titre">Nos
+						équipes</span>
+				</div>
+				<div class="tuile">
+					<span class="icone fa fa-envelope"></span> <span class="titre">Contacts</span>
+				</div>
+				<div class="tuile">
+					<span class="icone fa fa-cogs"></span> <span class="titre">Gestion</span>
+				</div>
+				<div class="tuile">
+					<span class="icone fa fa-user"></span> <span class="titre">Connexion</span>
+				</div>
+			</div>
+			<div class="container">
+				<span class="titre">Actualités du TPH</span>
+				<div class="content">
+					<div class="actu-obj-container">
+						<div class="actu-obj important">
+							<div class="date">
+								<span class="jour">21</span><span class="moi">mai</span>
+							</div>
+							<div class="titre">Recrutement Saison 2015-2016</div>
+							<div class="contenu">Afin de renforcer ses équipes et
+								notamment notre équipe Région Excellence, notre club, le Tarbes
+								Pyrénée HandBall recrute des joueurs et des joueuses pour sa
+								nouvelle saison. Si tu veux t'épanouir dans un club convivial
+								viens avec nous pour jouer au Handball, que tu sois aguerri ou
+								débutant, une place t'attend au sein de nos équipes... Pour nous
+								contacter : Section contact du notre site.</div>
+							<div class="masque-contenu"></div>
+						</div>
+					</div>
+					<div class="actu-obj-container">
+						<div class="actu-obj important">
+							<div class="date">
+								<span class="jour">21</span><span class="moi">mai</span>
+							</div>
+							<div class="titre">La fin d'une aventure</div>
+							<div class="contenu">L'aventure pour nos -15 garçons en
+								coupe midi Pyrénées s?arrête aujourd'hui, stoppé en 1/4 de final
+								par une équipe de Castres combative et qui évolue 2 niveaux
+								au-dessus. Les jeunes du TPH n'ont rien lâché, en difficulté
+								parfois en défense ils ont su contenir la pression des joueurs
+								de Castres tout au long du match. Bravo à toute l'équipe et
+								merci Jérôme Duran d'entrainer ces jeunes. Merci à tous les
+								supporters d'être venus encourager le TPH. Résultat = TPH 46 /
+								Castres 51.</div>
+							<div class="masque-contenu"></div>
+						</div>
+					</div>
+					<div class="actu-obj-container">
+						<div class="actu-obj">
+							<div class="date">
+								<span class="jour">12</span><span class="moi">mai</span>
+							</div>
+							<div class="titre">Recrutement Saison 2015-2016</div>
+							<div class="contenu">Afin de renforcer ses équipes et
+								notamment notre équipe Région Excellence, notre club, le Tarbes
+								Pyrénée HandBall recrute des joueurs et des joueuses pour sa
+								nouvelle saison. Si tu veux t'épanouir dans un club convivial
+								viens avec nous pour jouer au Handball, que tu sois aguerri ou
+								débutant, une place t'attend au sein de nos équipes... Pour nous
+								contacter : Section contact du notre site.</div>
+							<div class="masque-contenu"></div>
+						</div>
+					</div>
+					<div class="actu-obj-container">
+						<div class="actu-obj">
+							<div class="date">
+								<span class="jour">01</span><span class="moi">mai</span>
+							</div>
+							<div class="titre">La fin d'une aventure</div>
+							<div class="contenu">L'aventure pour nos -15 garçons en
+								coupe midi Pyrénées s?arrête aujourd'hui, stoppé en 1/4 de final
+								par une équipe de Castres combative et qui évolue 2 niveaux
+								au-dessus. Les jeunes du TPH n'ont rien lâché, en difficulté
+								parfois en défense ils ont su contenir la pression des joueurs
+								de Castres tout au long du match. Bravo à toute l'équipe et
+								merci Jérôme Duran d'entrainer ces jeunes. Merci à tous les
+								supporters d'être venus encourager le TPH. Résultat = TPH 46 /
+								Castres 51.</div>
+							<div class="masque-contenu"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="menu" class="menu" role-state="closed">
+			<div class="tuile">
+				<span class="icone fa fa-home"></span> <span class="titre">Présentation
+					du club</span>
+			</div>
+			<div class="tuile">
+				<span class="icone fa fa-info-circle"></span> <span class="titre">Présentation
+					du club</span>
+			</div>
+			<div class="tuile">
+				<span class="icone fa fa-group"></span> <span class="titre">Nos
+					équipes</span>
+			</div>
+			<div class="tuile">
+				<span class="icone fa fa-envelope"></span> <span class="titre">Contacts</span>
+			</div>
+			<div class="tuile">
+				<span class="icone fa fa-cogs"></span> <span class="titre">Gestion</span>
+			</div>
+			<div class="tuile">
+				<span class="icone fa fa-user"></span> <span class="titre">Identifications</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

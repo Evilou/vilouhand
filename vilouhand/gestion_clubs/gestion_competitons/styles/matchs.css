@@ -1,0 +1,176 @@
+@CHARSET "ISO-8859-1";
+
+.visu.match-obj {
+	box-shadow: 0 0 6px #666;
+	border-radius: 4px;
+	width: 250px;
+	height: 72px;
+	position: relative;
+	margin: 20px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-size: 12px;
+	background-color: #fff;
+}
+
+li.visu.match-obj {
+	list-style: none;
+}
+
+.visu.match-obj .nom-competition {
+	font-weight: bold;
+	color: #fff;
+	line-height: 20px;
+	position: absolute;
+	top: 2px;
+	right: -8px;
+	padding: 0 10px;
+	overflow: visible;
+	border-radius: 2px 2px 0px 2px;
+}
+
+/* Gestion des couleurs par équipe */
+.visu.match-obj[idequipe="8"] .nom-competition {
+	background-color: rgba(221, 51, 51, 0.8);
+}
+
+.visu.match-obj[idequipe="9"] .nom-competition {
+	background-color: rgba(234, 148, 45, 0.8);
+}
+
+.visu.match-obj[idequipe="37"] .nom-competition {
+	background-color: rgba(221, 51, 178, 0.8);;
+}
+
+.visu.match-obj[idequipe="11"] .nom-competition {
+	background-color: rgba(43, 181, 59, 0.8);
+}
+
+.visu.match-obj[idequipe="15"] .nom-competition {
+	background-color: rgba(51, 113, 221, 0.8);
+}
+
+.visu.match-obj .nom-competition:after {
+	content: "";
+	position: absolute;
+	box-sizing: border-box;
+	border: 4px solid #333;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	width: 8px;
+	height: 8px;
+	right: 0px;
+	bottom: -8px;
+}
+
+.visu.match-obj .equipes-container {
+	display: -webkit-box;
+	display: -webkit-flex; /* NEW - Chrome */
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	width: calc(100% - 44px);
+	position: absolute;
+	bottom: 4px;
+	left: 44px;
+}
+
+.visu.match-obj 	.categorie {
+	position: absolute;
+	bottom: 2px;
+	left: 2px;
+}
+
+.visu.match-obj  .infos-container {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	bottom: 2px;
+	width: 34px;
+	background-color: rgba(107, 169, 128, 0.9);
+	transition: width 1s;
+	z-index: 10;
+}
+
+.visu.match-obj[domcile="true"] .infos-container::after {
+	content: "";
+	position: absolute;
+	box-sizing: border-box;
+	width: 6px;
+	background-color: rgb(102, 134, 113);
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+}
+
+.visu.match-obj[domcile="true"] 	.infos-container:hover {
+	width: 200px;
+	cursor: pointer;
+}
+
+.visu.match-obj 	.infos-container .date {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 34px;
+	color: #fff;
+	text-align: center;
+	font-size: 10px;
+}
+
+.visu.match-obj 	.date * {
+	margin: 2px;
+	display: block;
+}
+
+.visu.match-obj 	.date .jour {
+	font-size: 24px;
+}
+
+.visu.match-obj .equipes-container .equipe {
+	margin: 2px;
+	position: relative;
+	line-height: 16px;
+	display: -webkit-box;
+	display: -webkit-flex; /* NEW - Chrome */
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.visu.match-obj .equipes-container .equipe .logo-container {
+	width: 16px;
+	height: 16px;
+	display: -webkit-box;
+	display: -webkit-flex; /* NEW - Chrome */
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	margin: 0px 2px;
+}
+
+.visu.match-obj .equipes-container .equipe .logo-container .logo-club {
+	max-height: 16px;
+	max-width: 16px;
+}
+
+.visu.match-obj .equipes-container .equipe .score {
+	position: absolute;
+	top: 0px;
+	right: 2px;
+	bottom: 0px;
+	padding: 0px 2px;
+}
+
+.visu.match-obj .equipes-container .equipe[mon-club="true"] .nom {
+	color: #f00;
+}
+
+.visu.match-obj .equipes-container .equipe[gagnant="true"] .nom {
+	font-weight: bold;
+}
+
+.visu.match-obj .equipes-container .equipe[gagnant="true"] .score {
+	color: #fff;
+	background-color: #D33;
+}
