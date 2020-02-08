@@ -68,13 +68,13 @@ class Routage {
 	/**
 	 * Constructeur
 	 *
-	 * @param $host URL
+	 * @param string $host URL
 	 *        	de la base de données
-	 * @param $login Identifiant
+	 * @param String $login Identifiant
 	 *        	de connexion à la base de données
-	 * @param $password Mot
+	 * @param string $password Mot
 	 *        	de passe pour la connexion à la base de données
-	 * @param $bdName Nom
+	 * @param string $bdName Nom
 	 *        	de la base de données
 	 */
 	public function Routage($host, $login, $password, $bdName) {
@@ -89,14 +89,14 @@ class Routage {
 				Routage::PAGE_LOGOFF,
 				Routage::PAGE_EN_CONSTRUCTION 
 		);
-		$tableRoutage = array ();
+		$this->tableRoutage = array ();
 		define ( 'START', microtime () );
 	}
 	
 	/**
 	 * Activation du module defaut du moteur
 	 *
-	 * @param unknown $nom_module        	
+	 * @param string $nom_module        	
 	 */
 	public function active_module($nom_module) {
 		switch ($nom_module) {
@@ -118,8 +118,8 @@ class Routage {
 	/**
 	 * Ajout d'un nom de page à la liste des pages ne nécéssitant pas d'identification
 	 *
-	 * @param unknown $type        	
-	 * @param unknown $newPage        	
+	 * @param string $type        	
+	 * @param string $newPage        	
 	 * @throws Exception
 	 */
 	public function ajouterPageSansIdent($newPage) {
@@ -143,7 +143,7 @@ class Routage {
 	/**
 	 * Permet de savoir si une page données nécéssite une identification
 	 *
-	 * @param unknown_type $page        	
+	 * @param string $page        	
 	 */
 	private function indentNeeded($page) {
 		return ! in_array ( $page, $this->pageSansIdent );
@@ -163,9 +163,9 @@ class Routage {
 	/**
 	 * Initialisation du script de routage associé à une page
 	 *
-	 * @param $page Nom
+	 * @param string $page Nom
 	 *        	de la page
-	 * @param $script Nom
+	 * @param string $script Nom
 	 *        	du script
 	 */
 	public function setModuleRoutage($page, Module $module) {

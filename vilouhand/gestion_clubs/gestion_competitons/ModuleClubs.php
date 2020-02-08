@@ -78,7 +78,7 @@ class ModuleClubs extends Module {
 	/**
 	 * Récupération d'une liste de club
 	 *
-	 * @param unknown $param        	
+	 * @param array $param        	
 	 * @throws Exception
 	 */
 	private function getClubs($param) {

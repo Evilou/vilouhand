@@ -72,7 +72,7 @@ class ModuleContacts extends Module {
 	/**
 	 * Envois un mail au contact du site
 	 *
-	 * @param unknown $param        	
+	 * @param array $param        	
 	 */
 	private function sendMail($param) {
 		// TODO Posibilité de controler les paramètre en vue de certifier l'intégrité de l'envoi

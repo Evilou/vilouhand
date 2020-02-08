@@ -13,16 +13,16 @@ abstract class Module {
 	 */
 	public function Module(Routage $routage) {
 		$this->routage = $routage;
-		$descriptionsPages = array ();
+		$this->descriptionsPages = array ();
 	}
 	
 	/**
 	 * initialisationd de la description d'une page du module
-	 * @param unknown $page Référence de la page
-	 * @param unknown $description Description de la page
+	 * @param string $page Référence de la page
+	 * @param string $description Description de la page
 	 */
 	public function setDescription($page, $description) {
-		$descriptionsPages [$page] = $description;
+	    $this->descriptionsPages [$page] = $description;
 	}
 	
 	/**

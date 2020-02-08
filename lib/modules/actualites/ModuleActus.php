@@ -102,9 +102,9 @@ class ModuleActus extends Module {
 	/**
 	 * Modification d'une actualité.
 	 *
-	 * @param unknown $idActu        	
-	 * @param unknown $titreActu        	
-	 * @param unknown $contenu        	
+	 * @param integer $idActu        	
+	 * @param string $titreActu        	
+	 * @param string $contenu        	
 	 * @param number $type        	
 	 */
 	public function saisieActu($idActu, $titreActu, $contenu, $type = 1) {

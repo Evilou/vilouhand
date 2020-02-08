@@ -114,12 +114,12 @@ class ModuleActus extends Module {
 	/**
 	 * Modification d'une actualité.
 	 *
-	 * @param unknown $idActu        	
-	 * @param unknown $titreActu        	
-	 * @param unknown $contenu        	
-	 * @param number $type        	
+	 * @param integer $idActu        	
+	 * @param string $titreActu        	
+	 * @param string $contenu        	
+	 * @param integer $type        	
 	 */
-	public function saisieActu($idActu, $titreActu, $contenu, $type = 1) {
+	public function saisieActu( $idActu, $titreActu, $contenu, $type = 1) {
 		$sgbd = $this->routage->getSGBDRoutage ();
 		$retour = array ();
 		

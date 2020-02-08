@@ -59,9 +59,9 @@ class ModuleEngagements extends Module {
 	 * Récupération des equipes engagées dans une compétitions.
 	 * Ces équipes seront disponnible pour ajouter des match et les associer à cette compétition.
 	 *
-	 * @param unknown $idCompetitions
+	 * @param integer $idCompetitions
 	 *        	Identifiant de la compétition
-	 * @return unknown[]
+	 * @return array
 	 */
 	private function getEquipesEngagees($idCompetitions) {
 		$query_str = "SELECT ";
@@ -86,7 +86,7 @@ class ModuleEngagements extends Module {
 	/**
 	 * Génère les matchs d'une compétitions pour le club courant
 	 *
-	 * @param unknown $idCompetitions        	
+	 * @param integer $idCompetitions        	
 	 */
 	private function genereMatchs($idCompetitions) {
 		$refClubPrincipal = T_REF_CLUB;
@@ -122,11 +122,11 @@ class ModuleEngagements extends Module {
 	/**
 	 * Récupération d'un match associé à une compétition
 	 *
-	 * @param unknown $idCompetitions        	
-	 * @param unknown $idEquipe1        	
-	 * @param unknown $idEquipe2        	
-	 * @param unknown $idChampionnnat        	
-	 * @return unknown|multitype:
+	 * @param integer $idCompetitions        	
+	 * @param integer $idEquipe1        	
+	 * @param integer $idEquipe2        	
+	 * @param integer $idChampionnnat        	
+	 * @return array|multitype:
 	 */
 	private function getMatch($idCompetitions, $idEquipe1, $idEquipe2) {
 		$query_str = "SELECT * ";
@@ -155,9 +155,9 @@ class ModuleEngagements extends Module {
 	
 	/**
 	 *
-	 * @param unknown $idCompetitions        	
-	 * @param unknown $idEquipe1        	
-	 * @param unknown $idEquipe2        	
+	 * @param integer $idCompetitions        	
+	 * @param integer $idEquipe1        	
+	 * @param integer $idEquipe2        	
 	 */
 	private function nouveauMatch($idCompetitions, $idEquipe1, $idEquipe2) {
 		$sgbd = $this->routage->getSGBDRoutage ();

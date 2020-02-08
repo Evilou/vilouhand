@@ -11,8 +11,8 @@ class Session {
 	 *
 	 * retourne le texte du script de Création des tables necessaire pour la session
 	 *
-	 * @param unknown_type $tableUtilisateurs        	
-	 * @param unknown_type $tableSessions        	
+	 * @param string $tableUtilisateurs        	
+	 * @param string $tableSessions        	
 	 */
 	static public function getStructTable($tableUtilisateurs = 'utilisateurs', $tableSessions = 'sessions') {
 		return "CREATE TABLE IF NOT EXISTS `$tableSessions` (
@@ -41,10 +41,10 @@ class Session {
 	
 	/**
 	 *
-	 * @param unknown $host        	
-	 * @param unknown $login        	
-	 * @param unknown $password        	
-	 * @param unknown $base        	
+	 * @param string $host        	
+	 * @param string $login        	
+	 * @param string $password        	
+	 * @param string $base        	
 	 * @param string $tableUtilisateurs        	
 	 * @param string $tableSessions        	
 	 * @throws Exception
@@ -254,7 +254,7 @@ class Session {
 	/**
 	 * Permet de savoir si le client courrant est identifiï¿½
 	 *
-	 * @return unknown_type
+	 * @return boolean
 	 */
 	function isOnline() {
 		$session = $this->get_session ();
@@ -264,13 +264,13 @@ class Session {
 	/**
 	 * CrÃ©ation d'un compte utilisateur
 	 *
-	 * @param $login Identifiant
+	 * @param string $login Identifiant
 	 *        	de l'utilisateur
-	 * @param $mdp Mot
+	 * @param string $mdp Mot
 	 *        	de passe
-	 * @param $mail Adresse
+	 * @param string $mail Adresse
 	 *        	mail de l'utilisateur
-	 * @param $niveau Niveau
+	 * @param integer $niveau Niveau
 	 *        	d'acces de l'utilisateur (0 = admin)
 	 */
 	function creerCompte($login, $mdp, $mail, $niveau) {
@@ -299,13 +299,13 @@ class Session {
 	/**
 	 * CrÃ©ation d'un compte utilisateur
 	 *
-	 * @param $login Identifiant
+	 * @param string $login Identifiant
 	 *        	de l'utilisateur
-	 * @param $mdp Mot
+	 * @param string $mdp Mot
 	 *        	de passe
-	 * @param $mail Adresse
+	 * @param string $mail Adresse
 	 *        	mail de l'utilisateur
-	 * @param $niveau Niveau
+	 * @param integer $niveau Niveau
 	 *        	d'acces de l'utilisateur (0 = admin)
 	 */
 	function supprimerCompte($login) {
@@ -334,8 +334,8 @@ class Session {
 	/**
 	 * Verification d'une identification
 	 *
-	 * @param $login Identifiant        	
-	 * @param $mdp Mot
+	 * @param string $login Identifiant        	
+	 * @param string $mdp Mot
 	 *        	de passe
 	 */
 	function verifierIdentification($login, $mdp) {

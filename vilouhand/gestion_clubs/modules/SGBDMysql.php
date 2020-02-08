@@ -25,11 +25,11 @@ class SGBDMysql {
 	/**
 	 * Cosntructeur du SGBD Mysql
 	 *
-	 * @param unknown_type $adresse
+	 * @param string $adresse
 	 *        	Adresse de connection
-	 * @param unknown_type $ident
+	 * @param string $ident
 	 *        	Identifiant de la connectino
-	 * @param unknown_type $password
+	 * @param string $password
 	 *        	Mot de passe de la connection
 	 * @return SGBDMysql
 	 */
@@ -42,7 +42,7 @@ class SGBDMysql {
 	/**
 	 * Connexion au serveur associé au SGBD
 	 *
-	 * @return 0 en cas de succes, le code erreur sinon
+	 * @return integer 0 en cas de succes, le code erreur sinon
 	 */
 	function connexion($ident = 'root', $password = '') {
 		// Dans le cas d'une reconnexion on se déconnecte avant de relancer le process de connexion
@@ -68,12 +68,12 @@ class SGBDMysql {
 	/**
 	 * Deconnexion du serveur associé au SGBD
 	 *
-	 * @return 0 en cas de succes, le code erreur sinon
+	 * @return integer 0 en cas de succes, le code erreur sinon
 	 */
 	function deconnexion() {
 		if ($this->connexionActive === TRUE) {
 			$this->sgbd_mysqli->close ();
-			$connexionActive = FALSE;
+			$this->connexionActive = FALSE;
 			return TRUE;
 		}
 		throw new Exception ( "Impossible de se déconnecter : Connexion non active" );
@@ -130,7 +130,7 @@ class SGBDMysql {
 	/**
 	 * Envois d'une requete vers le serveur
 	 *
-	 * @param unknown_type $requete        	
+	 * @param string $requete        	
 	 */
 	function envoyerRequete($requete, $multiple = FALSE) {
 		if ($this->connexionActive) {
@@ -155,9 +155,9 @@ class SGBDMysql {
 	/**
 	 * Connection à une base de données
 	 *
-	 * @param $nomBDD nom
+	 * @param string$nomBDD nom
 	 *        	de la base de données
-	 * @return Le code erreur
+	 * @return integer Le code erreur
 	 */
 	function choisirDB($nomBDD) {
 		$this->sgbd_mysqli->select_db ( $nomBDD );
@@ -192,8 +192,8 @@ class SGBDMysql {
 	/**
 	 * Traduction des informations r�cup�r�es pour une requete de type INSERT
 	 *
-	 * @param unknown_type $data        	
-	 * @return unknown
+	 * @param string $data        	
+	 * @return string
 	 */
 	public static function traduireDataToInsertValues($data) {
 		$listeVal = '';
@@ -213,8 +213,8 @@ class SGBDMysql {
 	/**
 	 * Traduction des informations r�cup�r�es pour une requete de type UPDATE
 	 *
-	 * @param unknown_type $data        	
-	 * @return unknown
+	 * @param string $data        	
+	 * @return string
 	 */
 	public static function traduireDataToUpdateValues($data) {
 		$requete = '';
@@ -229,7 +229,7 @@ class SGBDMysql {
 	/**
 	 * Récupère le dernier resultat d'une requete
 	 *
-	 * @return unknown
+	 * @return string
 	 */
 	function getResultat($format = '') {
 		if (! strcmp ( $format, 'TAB-ASSOC' )) {
