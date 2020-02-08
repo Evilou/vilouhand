@@ -77,7 +77,7 @@ class Routage {
 	 * @param string $bdName Nom
 	 *        	de la base de données
 	 */
-	public function Routage($host, $login, $password, $bdName) {
+	public function __construct($host, $login, $password, $bdName) {
 		$this->sgbd = new SGBDMysql ( $host );
 		$this->sgbd->connexion ( $login, $password );
 		$this->sgbd->choisirDB ( $bdName );

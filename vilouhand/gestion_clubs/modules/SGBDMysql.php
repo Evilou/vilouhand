@@ -33,7 +33,7 @@ class SGBDMysql {
 	 *        	Mot de passe de la connection
 	 * @return SGBDMysql
 	 */
-	function SGBDMysql($adresse = 'localhost') {
+	function __construct($adresse = 'localhost') {
 		$this->adresse = $adresse;
 		$this->idTransaction = 0;
 		$this->connexionActive = FALSE;

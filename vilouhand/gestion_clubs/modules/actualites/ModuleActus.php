@@ -17,7 +17,7 @@ class ModuleActus extends Module {
 	 *
 	 * @param Routage $routage        	
 	 */
-	public function ModuleActus(Routage $routage) {
+	public function __construct(Routage $routage) {
 		parent::__construct ( $routage );
 		if (defined ( T_PREFIXE_TABLE ))
 			$this->tableActus = T_PREFIXE_TABLE . ModuleActus::TABLE_ACTUS;

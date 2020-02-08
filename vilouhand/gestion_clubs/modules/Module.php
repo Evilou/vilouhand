@@ -11,7 +11,7 @@ abstract class Module {
 	/**
 	 * Constructeur
 	 */
-	public function Module(Routage $routage) {
+	public function __construct(Routage $routage) {
 		$this->routage = $routage;
 		$this->descriptionsPages = array ();
 	}

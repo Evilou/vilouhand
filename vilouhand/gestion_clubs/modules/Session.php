@@ -49,7 +49,7 @@ class Session {
 	 * @param string $tableSessions        	
 	 * @throws Exception
 	 */
-	public function Session($session_id, SGBDMysql $sgbd, $tableUtilisateurs = 'utilisateurs', $tableSessions = 'sessions') {
+	public function __construct($session_id, SGBDMysql $sgbd, $tableUtilisateurs = 'utilisateurs', $tableSessions = 'sessions') {
 		$this->tableUtilisateurs = $tableUtilisateurs;
 		$this->tableSessions = $tableSessions;
 		
